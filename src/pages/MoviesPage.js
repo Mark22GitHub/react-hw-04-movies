@@ -30,7 +30,7 @@ class MoviesPage extends Component {
   render() {
     console.log(this.props.match.url);
     const { movies } = this.state;
-    // const { match } = this.props;
+    const { match } = this.props;
     console.log(movies);
     return (
       <>
@@ -40,7 +40,7 @@ class MoviesPage extends Component {
         <ul className="">
           {movies.map(({ id, title }) => (
             <li className="" key={id}>
-              <Link to={`/movies/${id}`}>
+              <Link to={`${match.url}/${id}`}>
                 {/* ${match.url} */}
                 <h2 className="">{title}</h2>
               </Link>

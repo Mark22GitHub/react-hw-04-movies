@@ -31,6 +31,16 @@ const fetchTrendingMovies = async () => {
   }
 };
 
+// export const fetchMovieId = async movie_id => {
+//   try {
+//     await axios
+//       .get(`/movie/${movie_id}?api_key=${apiKey}`)
+//       .then(response => response.data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 export default { fetchTrendingMovies };
 
 // =====================================================================================

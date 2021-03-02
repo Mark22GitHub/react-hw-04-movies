@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import apiMovieDB from '../api/the-movie-db-API';
 
 // =====================================================================================
 // API Key: f6569593c995527660cd005f6c6f1d95
@@ -15,27 +17,42 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 class HomePage extends Component {
   state = {
-    trendingmMovies: [],
+    trendingMovies: [],
   };
 
-  async componentDidMount() {
-    const response = await axios.get(`/trending/movie/week?api_key=${apiKey}`);
-    console.log(response.data.results);
-
-    this.setState({ trendingmMovies: response.data.results });
+  componentDidMount() {
+    console.log('componentDidMount');
+    apiMovieDB.fetchTrendingMovies().then(results =>
+      this.setState({
+        trendingMovies: results,
+      }),
+    );
   }
 
+  // async componentDidMount() {
+  //   const response = await axios.get(`/trending/movie/week?api_key=${apiKey}`);
+  //   console.log(response.data.results);
+
+  //   this.setState({ trendingMovies: response.data.results });
+  // }
+
   render() {
-    const { trendingmMovies } = this.state;
+    console.log(this.props.match.url);
+    const { trendingMovies } = this.state;
+    // const { match } = this.props;
+
     return (
       <>
-        <h1>
-          'Home Page', домашняя страница со списком популярных кинофильмов
-        </h1>
+        <h1 className="">Trending Movies</h1>
 
-        <ul>
-          {trendingmMovies.map(({ id, title }) => (
-            <li key={id}> {title} </li>
+        <ul className="">
+          {trendingMovies.map(({ id, title }) => (
+            <li className="" key={id}>
+              <Link to={`/movies/${id}`}>
+                {/* {this.props.match.url} */}
+                <h2 className="">{title}</h2>
+              </Link>
+            </li>
           ))}
         </ul>
       </>
@@ -44,13 +61,3 @@ class HomePage extends Component {
 }
 
 export default HomePage;
-
-// import React from 'react';
-
-// const HomePage = () => {
-//   return (
-//     <h1>'HomePage', домашняя страница со списком популярных кинофильмов</h1>
-//   );
-// };
-
-// export default HomePage;

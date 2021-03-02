@@ -14,7 +14,8 @@ code {
 
 .NavLink {
   font-size: 20px;
-  color: brown;
+  /* color: brown; */
+  color: black;
 }
 
 .NavLink__Active {

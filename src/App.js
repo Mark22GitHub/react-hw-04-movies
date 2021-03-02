@@ -3,8 +3,8 @@ import './App.css';
 import React from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import MoviesPage from './pages/MoviesPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
+import MoviesPage from './pages/MoviesPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
@@ -43,8 +43,8 @@ const App = () => {
 
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/movies" component={MoviesPage} />
         <Route path="/movies/:movieId" component={MovieDetailsPage} />
+        <Route path="/movies" component={MoviesPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>

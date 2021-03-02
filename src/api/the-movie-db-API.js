@@ -1,8 +1,3 @@
-// import axios from 'axios';
-
-// const key = '18623551-685e1819373a3e2d77873e072';
-// axios.defaults.baseURL = 'https://pixabay.com/api/';
-
 // const fetchPictures = ({ query = '', page = 1 }) => {
 //   return axios
 //     .get(
@@ -11,7 +6,32 @@
 //     .then(({ data }) => data.hits);
 // };
 
-// export default fetchPictures;
+import axios from 'axios';
+
+const apiKey = 'f6569593c995527660cd005f6c6f1d95';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+
+// const fetchTrendingMovies = () => {
+//   return (
+//     axios
+//       .get(`/trending/movie/week?api_key=${apiKey}`)
+//       .then(({ data }) => data.results)
+//       // .then(response => response.data.results);
+//       .catch(error => console.log(error))
+//   );
+// };
+
+const fetchTrendingMovies = async () => {
+  try {
+    return await axios
+      .get(`/trending/movie/week?api_key=${apiKey}`)
+      .then(({ data }) => data.results);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default { fetchTrendingMovies };
 
 // =====================================================================================
 // API Key: f6569593c995527660cd005f6c6f1d95
@@ -21,6 +41,3 @@
 // `https://api.themoviedb.org/3/movie/550?api_key=f6569593c995527660cd005f6c6f1d95`
 
 // =====================================================================================
-
-// const apiKey = 'f6569593c995527660cd005f6c6f1d95';
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3';

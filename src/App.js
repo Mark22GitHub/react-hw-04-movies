@@ -1,7 +1,7 @@
 import './App.css';
 
 import React from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import MoviesPage from './pages/MoviesPage';
@@ -44,8 +44,9 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/movies/:movieId" component={MovieDetailsPage} />
-        <Route path="/movies" component={MoviesPage} />
-        <Route component={NotFoundPage} />
+        <Route exact path="/movies" component={MoviesPage} />
+        <Route path="/404" component={NotFoundPage} />
+        <Redirect to="/404" />
       </Switch>
     </>
   );

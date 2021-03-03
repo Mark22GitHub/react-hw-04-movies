@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import Cast from './Cast';
+import Reviews from './Reviews';
 
 const apiKey = 'f6569593c995527660cd005f6c6f1d95';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -28,13 +29,15 @@ class MovieDetailsPage extends Component {
 
   render() {
     const { movieId } = this.props.match.params;
+    const { match } = this.props;
+
     const {
       poster_path,
       title,
       runtime,
       vote_average,
       overview,
-      genres: { name },
+      genres,
     } = this.state;
     return (
       <>
@@ -45,10 +48,34 @@ class MovieDetailsPage extends Component {
         <p>Runtime: {runtime} mins</p>
         <p>User's score: {vote_average}</p>
         <h3>Overview: {overview}</h3>
-        <h4>Genres: {name}</h4>
+        <h4>Genres:</h4>
+        <ul>
+          {genres.map(({ id, name }) => (
+            <li key={id}>{name}</li>
+          ))}
+        </ul>
+
+        <ul className="">
+          <li className="">
+            <NavLink to={`${match.url}/cast`}>cast</NavLink>
+          </li>
+          <li className="">
+            <NavLink to={`${match.url}/reviews`}>reviews</NavLink>
+          </li>
+        </ul>
 
         <Switch>
-          <Route exact path="/movies/:movieId/cast" component={Cast} />
+          <Route
+            exact
+            path="/movies/:movieId/cast"
+            render={props => <Cast {...props} extraPropName={movieId} />}
+          />
+
+          <Route
+            exact
+            path="/movies/:movieId/reviews"
+            render={props => <Reviews {...props} extraPropName={movieId} />}
+          />
         </Switch>
       </>
     );

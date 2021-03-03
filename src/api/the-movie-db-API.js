@@ -31,10 +31,10 @@ const fetchTrendingMovies = async () => {
   }
 };
 
-// export const fetchMovieId = async movie_id => {
+// export const fetchMovieId = async movieId => {
 //   try {
 //     await axios
-//       .get(`/movie/${movie_id}?api_key=${apiKey}`)
+//       .get(`/movie/${movieId}?api_key=${apiKey}`)
 //       .then(response => response.data);
 //   } catch (error) {
 //     console.log(error);

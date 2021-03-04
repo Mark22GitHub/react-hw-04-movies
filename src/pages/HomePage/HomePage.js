@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import apiMovieDB from '../api/the-movie-db-API';
+import apiMovieDB from '../../api/the-movie-db-API';
 
 // =====================================================================================
 // API Key: f6569593c995527660cd005f6c6f1d95
@@ -46,11 +46,15 @@ class HomePage extends Component {
         <h1 className="">Trending Movies</h1>
 
         <ul className="">
-          {trendingMovies.map(({ id, title }) => (
+          {trendingMovies.map(({ id, title, poster_path }) => (
             <li className="" key={id}>
               <Link to={`/movies/${id}`}>
                 {/* {this.props.match.url} */}
                 <h2 className="">{title}</h2>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                  alt={title}
+                />
               </Link>
             </li>
           ))}

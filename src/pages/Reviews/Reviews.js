@@ -32,7 +32,7 @@ class Reviews extends Component {
           {results.map(({ id, author, content }) => (
             <li key={id}>
               <h3>Author: {author}</h3>
-              <h4>Review: {content}</h4>
+              <p>Review: {content}</p>
             </li>
           ))}
         </ul>

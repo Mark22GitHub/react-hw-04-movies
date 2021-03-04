@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import apiMovieDB from '../api/the-movie-db-API';
+import apiMovieDB from '../../api/the-movie-db-API';
 import { Link } from 'react-router-dom';
 
 const apiKey = 'f6569593c995527660cd005f6c6f1d95';

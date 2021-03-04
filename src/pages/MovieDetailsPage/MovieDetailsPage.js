@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import Cast from './Cast';
-import Reviews from './Reviews';
+import Cast from '../Cast/Cast';
+import Reviews from '../Reviews/Reviews';
 
 const apiKey = 'f6569593c995527660cd005f6c6f1d95';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -41,9 +41,11 @@ class MovieDetailsPage extends Component {
     } = this.state;
     return (
       <>
-        <h1>'MovieDetailsPage' {movieId}</h1>
-
-        <img src={poster_path} alt={title}></img>
+        {/* <h1>'MovieDetailsPage' {movieId}</h1> */}
+        <img
+          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+          alt={title}
+        />
         <h2>{title}</h2>
         <p>Runtime: {runtime} mins</p>
         <p>User's score: {vote_average}</p>
@@ -54,7 +56,6 @@ class MovieDetailsPage extends Component {
             <li key={id}>{name}</li>
           ))}
         </ul>
-
         <ul className="">
           <li className="">
             <NavLink to={`${match.url}/cast`}>cast</NavLink>
@@ -63,7 +64,6 @@ class MovieDetailsPage extends Component {
             <NavLink to={`${match.url}/reviews`}>reviews</NavLink>
           </li>
         </ul>
-
         <Switch>
           <Route
             exact

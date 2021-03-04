@@ -2,10 +2,10 @@ import './App.css';
 
 import React from 'react';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import MovieDetailsPage from './pages/MovieDetailsPage';
-import MoviesPage from './pages/MoviesPage';
-import NotFoundPage from './pages/NotFoundPage';
+import HomePage from './pages/HomePage/HomePage';
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
+import MoviesPage from './pages/MoviesPage/MoviesPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 const App = () => {
   return (

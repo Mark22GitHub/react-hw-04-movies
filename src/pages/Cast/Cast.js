@@ -31,7 +31,11 @@ class Cast extends Component {
         <ul>
           {cast.map(({ id, name, profile_path, character }) => (
             <li key={id}>
-              <img src={profile_path} alt={name} />
+              <img
+                src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
+                // `https://mir-s3-cdn-cf.behance.net/projects/original/22124287.5490a316e6764.png`
+                alt={name}
+              />
               <h4>Actor: {name}</h4>
               <h4>Character: {character}</h4>
             </li>

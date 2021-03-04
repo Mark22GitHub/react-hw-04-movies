@@ -1,0 +1,20 @@
+.Menu {
+  height: 60px;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.NavLink {
+  color: #fff;
+  text-transform: uppercase;
+  width: 150px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.NavLink__Active {
+  color: rgb(56, 244, 181);
+}

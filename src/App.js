@@ -6,12 +6,13 @@ import HomePage from './pages/HomePage/HomePage';
 import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 import MoviesPage from './pages/MoviesPage/MoviesPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Header from './Components/Header/Header';
 
 const App = () => {
   return (
     <>
       <ul>
-        <li>
+        {/* <li>
           <NavLink
             exact
             to="/"
@@ -29,8 +30,8 @@ const App = () => {
           >
             Movies Page
           </NavLink>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <NavLink
             to="/movies/:movieId"
             className="NavLink"
@@ -38,9 +39,10 @@ const App = () => {
           >
             Movie Details Page
           </NavLink>
-        </li>
+        </li> */}
       </ul>
 
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/movies/:movieId" component={MovieDetailsPage} />

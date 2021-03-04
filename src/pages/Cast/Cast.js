@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import styles from './Cast.module.css';
 
 const apiKey = 'f6569593c995527660cd005f6c6f1d95';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -28,10 +29,11 @@ class Cast extends Component {
     console.log(cast);
     return (
       <>
-        <ul>
+        <ul className={styles.castList}>
           {cast.map(({ id, name, profile_path, character }) => (
-            <li key={id}>
+            <li key={id} className={styles.castItem}>
               <img
+                className={styles.castImg}
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w200/${profile_path}`
@@ -39,6 +41,7 @@ class Cast extends Component {
                 }
                 alt={name}
                 width="200"
+                height="300"
               />
               <h4>Actor: {name}</h4>
               <h4>Character: {character}</h4>

@@ -67,13 +67,13 @@ class MovieDetailsPage extends Component {
         <Switch>
           <Route
             exact
-            path="/movies/:movieId/cast"
+            path={`${match.path}/cast`}
             render={props => <Cast {...props} extraPropName={movieId} />}
           />
 
           <Route
             exact
-            path="/movies/:movieId/reviews"
+            path={`${match.path}/reviews`}
             render={props => <Reviews {...props} extraPropName={movieId} />}
           />
         </Switch>

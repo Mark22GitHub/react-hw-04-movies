@@ -50,11 +50,11 @@ class HomePage extends Component {
             <li className="" key={id}>
               <Link to={`/movies/${id}`}>
                 {/* {this.props.match.url} */}
-                <h2 className="">{title}</h2>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                   alt={title}
                 />
+                <h2 className="">{title}</h2>
               </Link>
             </li>
           ))}

@@ -11,37 +11,6 @@ import Header from './Components/Header/Header';
 const App = () => {
   return (
     <>
-      <ul>
-        {/* <li>
-          <NavLink
-            exact
-            to="/"
-            className="NavLink"
-            activeClassName="NavLink__Active"
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/movies"
-            className="NavLink"
-            activeClassName="NavLink__Active"
-          >
-            Movies Page
-          </NavLink>
-        </li> */}
-        {/* <li>
-          <NavLink
-            to="/movies/:movieId"
-            className="NavLink"
-            activeClassName="NavLink__Active"
-          >
-            Movie Details Page
-          </NavLink>
-        </li> */}
-      </ul>
-
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

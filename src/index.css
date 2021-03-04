@@ -9,13 +9,17 @@ body {
   background-color: rgba(0, 0, 0, 0.792);
   background-image: url('https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
 }
+#root {
+  margin-top: -16px;
+}
 
 ul {
   list-style: none;
 }
 
-#root {
-  margin: -16px;
+h1,
+a {
+  text-decoration: none;
 }
 
 code {

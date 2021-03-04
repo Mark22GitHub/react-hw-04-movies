@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
+import styles from './MovieDetailsPage.module.css';
 
 const apiKey = 'f6569593c995527660cd005f6c6f1d95';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -41,21 +42,29 @@ class MovieDetailsPage extends Component {
     } = this.state;
     return (
       <>
-        {/* <h1>'MovieDetailsPage' {movieId}</h1> */}
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-          alt={title}
-        />
-        <h2>{title}</h2>
-        <p>Runtime: {runtime} mins</p>
-        <p>User's score: {vote_average}</p>
-        <h3>Overview: {overview}</h3>
-        <h4>Genres:</h4>
-        <ul>
-          {genres.map(({ id, name }) => (
-            <li key={id}>{name}</li>
-          ))}
-        </ul>
+        <div className={styles.detailsContainer}>
+          <img
+            className={styles.detailsImg}
+            src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+            alt={title}
+          />
+
+          <div className={styles.detailsContainerInfo}>
+            <h2 className={styles.detailsTitle}>{title}</h2>
+            <p>Runtime: {runtime} mins</p>
+            <p>User's score: {vote_average}</p>
+            <h3 className={styles.detailsOverview}>
+              <span>Overview:</span> {overview}
+            </h3>
+            <h4 className="">Genres:</h4>
+            <ul>
+              {genres.map(({ id, name }) => (
+                <li key={id}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
         <ul className="">
           <li className="">
             <NavLink to={`${match.url}/cast`}>cast</NavLink>
@@ -64,6 +73,7 @@ class MovieDetailsPage extends Component {
             <NavLink to={`${match.url}/reviews`}>reviews</NavLink>
           </li>
         </ul>
+
         <Switch>
           <Route
             exact
@@ -83,3 +93,25 @@ class MovieDetailsPage extends Component {
 }
 
 export default MovieDetailsPage;
+
+{
+  /* <div className={styles.detailsContainer}>
+          
+          
+          <img
+            className={styles.detailsImg}>
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            alt={title}
+          />
+          <h2 className={styles.detailsTitle}>{title}</h2>
+          <p className={styles.detailsText}>Runtime: {runtime} mins</p>
+          <p className={styles.detailsText}>User's score: {vote_average}</p>
+          <h3 className={styles.detailsOverview}>Overview: {overview}</h3>
+          <h4 className="">Genres:</h4>
+          <ul className={styles.detailsGenres}>
+            {genres.map(({ id, name }) => (
+              <li key={id}>{name}</li>
+            ))}
+          </ul>
+        </div> */
+}

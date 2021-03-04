@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import apiMovieDB from '../../api/the-movie-db-API';
+import styles from './HomePage.module.css';
 
 // =====================================================================================
 // API Key: f6569593c995527660cd005f6c6f1d95
@@ -43,18 +44,19 @@ class HomePage extends Component {
 
     return (
       <>
-        <h1 className="">Trending Movies</h1>
+        <h1 className={styles.trendingMovie}>Trending Movies</h1>
 
-        <ul className="">
+        <ul className={styles.trendingMovieList}>
           {trendingMovies.map(({ id, title, poster_path }) => (
-            <li className="" key={id}>
+            <li className={styles.trendingMovieCard} key={id}>
               <Link to={`/movies/${id}`}>
                 {/* {this.props.match.url} */}
                 <img
+                  className={styles.trendingMovieImg}
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                   alt={title}
                 />
-                <h2 className="">{title}</h2>
+                <h2 className={styles.trendingMovieTitle}>{title}</h2>
               </Link>
             </li>
           ))}

@@ -1,0 +1,23 @@
+.detailsContainer {
+  display: flex;
+}
+.detailsContainerInfo {
+  margin-left: 20px;
+  padding: 30px;
+}
+.detailsTitle {
+  margin-bottom: 40px;
+}
+.detailsOverview {
+  margin-bottom: 35px;
+  max-width: 730px;
+}
+
+span {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.detailsImg {
+  padding: 30px;
+}

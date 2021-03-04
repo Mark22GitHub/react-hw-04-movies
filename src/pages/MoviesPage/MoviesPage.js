@@ -11,14 +11,14 @@ class MoviesPage extends Component {
     movies: [],
   };
 
-  componentDidMount() {
-    console.log('componentDidMount');
-    apiMovieDB.fetchTrendingMovies().then(results =>
-      this.setState({
-        movies: results,
-      }),
-    );
-  }
+  // componentDidMount() {
+  //   console.log('componentDidMount');
+  //   apiMovieDB.fetchTrendingMovies().then(results =>
+  //     this.setState({
+  //       movies: results,
+  //     }),
+  //   );
+  // }
 
   //   async componentDidMount() {
   //     const response = await axios.get(`/trending/movie/week?api_key=${apiKey}`);

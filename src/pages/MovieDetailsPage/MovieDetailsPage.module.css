@@ -21,3 +21,21 @@ span {
 .detailsImg {
   padding: 30px;
 }
+
+.NavLinkItem {
+  margin-bottom: 20px;
+}
+
+.NavLink {
+  color: black;
+  text-transform: uppercase;
+  width: 150px;
+  font-weight: 700;
+  text-decoration: none;
+
+  margin-bottom: 20px;
+}
+
+.NavLink__Active {
+  color: rgb(56, 244, 181);
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import styles from './Reviews.module.css';
 
 const apiKey = 'f6569593c995527660cd005f6c6f1d95';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -30,9 +31,11 @@ class Reviews extends Component {
       <>
         <ul>
           {results.map(({ id, author, content }) => (
-            <li key={id}>
+            <li key={id} className={styles.ReviewsItem}>
               <h3>Author: {author}</h3>
-              <p>Review: {content}</p>
+              <p>
+                <span>Review:</span> {content}
+              </p>
             </li>
           ))}
         </ul>

@@ -21,7 +21,7 @@ const Header = () => {
           className={styles.NavLink}
           activeClassName={styles.NavLink__Active}
         >
-          Movies Page
+          Movies
         </NavLink>
       </Toolbar>
     </AppBar>

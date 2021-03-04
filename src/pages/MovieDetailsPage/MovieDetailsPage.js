@@ -66,11 +66,23 @@ class MovieDetailsPage extends Component {
         </div>
 
         <ul className="">
-          <li className="">
-            <NavLink to={`${match.url}/cast`}>cast</NavLink>
+          <li className={styles.NavLinkItem}>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.NavLink__Active}
+              to={`${match.url}/cast`}
+            >
+              cast
+            </NavLink>
           </li>
-          <li className="">
-            <NavLink to={`${match.url}/reviews`}>reviews</NavLink>
+          <li className={styles.NavLinkItem}>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.NavLink__Active}
+              to={`${match.url}/reviews`}
+            >
+              reviews
+            </NavLink>
           </li>
         </ul>
 

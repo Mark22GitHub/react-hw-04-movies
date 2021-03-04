@@ -14,6 +14,10 @@ ul {
   list-style: none;
 }
 
+#root {
+  margin: -16px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

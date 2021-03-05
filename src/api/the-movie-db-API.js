@@ -76,17 +76,6 @@ const fetchMovieReviews = async movieId => {
   }
 };
 
-//   async componentDidMount() {
-//     const { movieId } = this.props.match.params;
-
-//     const response = await axios.get(
-//       `/movie/${movieId}/reviews?api_key=${apiKey}`,
-//     );
-//     console.log(response.data.results);
-
-//     this.setState({ ...response.data });
-//   }
-
 export default {
   fetchTrendingMovies,
   fetchMovieDetails,

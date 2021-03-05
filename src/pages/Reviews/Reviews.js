@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import styles from './Reviews.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
 
-// const apiKey = 'f6569593c995527660cd005f6c6f1d95';
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
 class Reviews extends Component {
   state = {
-    results: [],
+    reviews: [],
   };
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
-    const { results } = this.state;
-
     apiMovieDB
       .fetchMovieReviews(movieId)
-      .then(data => this.setState({ ...data }));
+      .then(data => this.setState({ reviews: [...data.results] }));
   }
 
   // async componentDidMount() {
@@ -35,20 +29,24 @@ class Reviews extends Component {
   render() {
     // const { match } = this.props;
     // const { movieId } = this.props.match.params;
-    const { results } = this.state;
-    console.log(results);
+    const { reviews } = this.state;
+    console.log(reviews);
     return (
       <>
-        <ul>
-          {results.map(({ id, author, content }) => (
-            <li key={id} className={styles.ReviewsItem}>
-              <h3>Author: {author}</h3>
-              <p>
-                <span>Review:</span> {content}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h1 className={styles.title}>Reviews</h1>
+          <ul>
+            {reviews.map(({ id, author, content }) => (
+              <li key={id} className={styles.ReviewsItem}>
+                <h3>Author: {author}</h3>
+                <p>
+                  <span>Review:</span> {content}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* <ul>
           {reviews.map(review => (
             <li key={review.id}>

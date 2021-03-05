@@ -11,11 +11,11 @@ class Cast extends Component {
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
-    const { cast } = this.state;
+    // const { cast } = this.state;
 
     apiMovieDB
       .fetchMovieCredits(movieId)
-      .then(data => this.setState({ ...data }));
+      .then(data => this.setState({ cast: [...data.cast] }));
   }
 
   // async componentDidMount() {
@@ -30,29 +30,32 @@ class Cast extends Component {
   // }
 
   render() {
-    const { match } = this.props;
-    const { movieId } = this.props.match.params;
+    // const { match } = this.props;
+    // const { movieId } = this.props.match.params;
     const { cast } = this.state;
     console.log(cast);
     return (
       <>
-        <ul className={styles.castList}>
-          {cast.map(({ id, name, profile_path, character }) => (
-            <li key={id} className={styles.castItem}>
-              <img
-                className={styles.castImg}
-                src={
-                  profile_path
-                    ? `https://image.tmdb.org/t/p/w200/${profile_path}`
-                    : `https://teron.online/uploads/post-7-1163969421_thumb.jpg`
-                }
-                alt={name}
-              />
-              <h4>Actor: {name}</h4>
-              <h4>Character: {character}</h4>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h1 className={styles.title}>Cast</h1>
+          <ul className={styles.castList}>
+            {cast.map(({ id, name, profile_path, character }) => (
+              <li key={id} className={styles.castItem}>
+                <img
+                  className={styles.castImg}
+                  src={
+                    profile_path
+                      ? `https://image.tmdb.org/t/p/w200/${profile_path}`
+                      : `https://teron.online/uploads/post-7-1163969421_thumb.jpg`
+                  }
+                  alt={name}
+                />
+                <h4>Actor: {name}</h4>
+                <h4>Character: {character}</h4>
+              </li>
+            ))}
+          </ul>
+        </div>
       </>
     );
   }

@@ -8,7 +8,7 @@ import apiMovieDB from '../../api/the-movie-db-API';
 
 class MovieDetailsPage extends Component {
   state = {
-    // movie: {},
+    movie: [],
     poster_path: null,
     title: null,
     runtime: null,
@@ -33,6 +33,7 @@ class MovieDetailsPage extends Component {
 
     apiMovieDB
       .fetchMovieDetails(movieId)
+      // .then(data => console.log(data));
       .then(data => this.setState({ ...data }));
     // console.log(movie);
   }
@@ -74,27 +75,29 @@ class MovieDetailsPage extends Component {
           </div>
         </div>
 
-        <h3>Additional information</h3>
-        <ul className="">
-          <li className={styles.NavLinkItem}>
-            <NavLink
-              className={styles.NavLink}
-              activeClassName={styles.NavLink__Active}
-              to={`${match.url}/cast`}
-            >
-              cast
-            </NavLink>
-          </li>
-          <li className={styles.NavLinkItem}>
-            <NavLink
-              className={styles.NavLink}
-              activeClassName={styles.NavLink__Active}
-              to={`${match.url}/reviews`}
-            >
-              reviews
-            </NavLink>
-          </li>
-        </ul>
+        <div>
+          <h3 className={styles.AddInfo}>Additional information:</h3>
+          <ul className="">
+            <li className={styles.NavLinkItem}>
+              <NavLink
+                className={styles.NavLink}
+                activeClassName={styles.NavLink__Active}
+                to={`${match.url}/cast`}
+              >
+                cast
+              </NavLink>
+            </li>
+            <li className={styles.NavLinkItem}>
+              <NavLink
+                className={styles.NavLink}
+                activeClassName={styles.NavLink__Active}
+                to={`${match.url}/reviews`}
+              >
+                reviews
+              </NavLink>
+            </li>
+          </ul>
+        </div>
 
         <Switch>
           <Route

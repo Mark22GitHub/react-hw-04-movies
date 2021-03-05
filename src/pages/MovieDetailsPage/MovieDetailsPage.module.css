@@ -34,8 +34,13 @@ span {
   text-decoration: none;
 
   margin-bottom: 20px;
+  text-decoration: revert;
 }
 
 .NavLink__Active {
   color: rgb(56, 244, 181);
+}
+
+.AddInfo {
+  margin-left: 40px;
 }

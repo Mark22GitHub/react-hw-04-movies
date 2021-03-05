@@ -4,13 +4,11 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import styles from './MovieDetailsPage.module.css';
-
-const apiKey = 'f6569593c995527660cd005f6c6f1d95';
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+import apiMovieDB from '../../api/the-movie-db-API';
 
 class MovieDetailsPage extends Component {
   state = {
-    movie: null,
+    // movie: {},
     poster_path: null,
     title: null,
     runtime: null,
@@ -19,13 +17,24 @@ class MovieDetailsPage extends Component {
     genres: [],
   };
 
-  async componentDidMount() {
+  // async componentDidMount() {
+  //   const { movieId } = this.props.match.params;
+
+  //   const response = await axios.get(`/movie/${movieId}?api_key=${apiKey}`);
+  //   console.log(response.data);
+
+  //   this.setState({ ...response.data });
+  // }
+
+  componentDidMount() {
     const { movieId } = this.props.match.params;
+    const { movie } = this.state;
+    // console.log('componentDidMount');
 
-    const response = await axios.get(`/movie/${movieId}?api_key=${apiKey}`);
-    console.log(response.data);
-
-    this.setState({ ...response.data });
+    apiMovieDB
+      .fetchMovieDetails(movieId)
+      .then(data => this.setState({ ...data }));
+    // console.log(movie);
   }
 
   render() {
@@ -65,6 +74,7 @@ class MovieDetailsPage extends Component {
           </div>
         </div>
 
+        <h3>Additional information</h3>
         <ul className="">
           <li className={styles.NavLinkItem}>
             <NavLink
@@ -106,24 +116,23 @@ class MovieDetailsPage extends Component {
 
 export default MovieDetailsPage;
 
-{
-  /* <div className={styles.detailsContainer}>
-          
-          
-          <img
-            className={styles.detailsImg}>
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={title}
-          />
-          <h2 className={styles.detailsTitle}>{title}</h2>
-          <p className={styles.detailsText}>Runtime: {runtime} mins</p>
-          <p className={styles.detailsText}>User's score: {vote_average}</p>
-          <h3 className={styles.detailsOverview}>Overview: {overview}</h3>
-          <h4 className="">Genres:</h4>
-          <ul className={styles.detailsGenres}>
-            {genres.map(({ id, name }) => (
-              <li key={id}>{name}</li>
-            ))}
-          </ul>
-        </div> */
-}
+// {
+//   /* <div className={styles.detailsContainer}>
+
+//           <img
+//             className={styles.detailsImg}>
+//             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+//             alt={title}
+//           />
+//           <h2 className={styles.detailsTitle}>{title}</h2>
+//           <p className={styles.detailsText}>Runtime: {runtime} mins</p>
+//           <p className={styles.detailsText}>User's score: {vote_average}</p>
+//           <h3 className={styles.detailsOverview}>Overview: {overview}</h3>
+//           <h4 className="">Genres:</h4>
+//           <ul className={styles.detailsGenres}>
+//             {genres.map(({ id, name }) => (
+//               <li key={id}>{name}</li>
+//             ))}
+//           </ul>
+//         </div> */
+// }

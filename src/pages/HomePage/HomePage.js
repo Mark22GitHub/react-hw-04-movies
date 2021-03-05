@@ -13,8 +13,8 @@ import styles from './HomePage.module.css';
 
 // =====================================================================================
 // /trending/{media_type}/{time_window}
-const apiKey = 'f6569593c995527660cd005f6c6f1d95';
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+// const apiKey = 'f6569593c995527660cd005f6c6f1d95';
+// axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 class HomePage extends Component {
   state = {

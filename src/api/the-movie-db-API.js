@@ -21,6 +21,7 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 //   );
 // };
 
+// Trending/ fetchTrendingMovies
 const fetchTrendingMovies = async () => {
   try {
     return await axios
@@ -31,6 +32,7 @@ const fetchTrendingMovies = async () => {
   }
 };
 
+// Movies/ fetchSearchMovies
 // export const fetchMovieId = async movieId => {
 //   try {
 //     await axios
@@ -41,7 +43,56 @@ const fetchTrendingMovies = async () => {
 //   }
 // };
 
-export default { fetchTrendingMovies };
+// MovieDetails / fetchMovieDetails
+const fetchMovieDetails = async movieId => {
+  try {
+    return await axios
+      .get(`/movie/${movieId}?api_key=${apiKey}`)
+      .then(({ data }) => data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Cast / fetchMovieCredits
+const fetchMovieCredits = async movieId => {
+  try {
+    return await axios
+      .get(`/movie/${movieId}/credits?api_key=${apiKey}`)
+      .then(({ data }) => data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Reviews /fetchMovieReviews
+const fetchMovieReviews = async movieId => {
+  try {
+    return await axios
+      .get(`/movie/${movieId}/reviews?api_key=${apiKey}`)
+      .then(({ data }) => data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//   async componentDidMount() {
+//     const { movieId } = this.props.match.params;
+
+//     const response = await axios.get(
+//       `/movie/${movieId}/reviews?api_key=${apiKey}`,
+//     );
+//     console.log(response.data.results);
+
+//     this.setState({ ...response.data });
+//   }
+
+export default {
+  fetchTrendingMovies,
+  fetchMovieDetails,
+  fetchMovieCredits,
+  fetchMovieReviews,
+};
 
 // =====================================================================================
 // API Key: f6569593c995527660cd005f6c6f1d95

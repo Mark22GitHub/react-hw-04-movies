@@ -32,16 +32,16 @@ const fetchTrendingMovies = async () => {
   }
 };
 
-// Movies/ fetchSearchMovies
-// export const fetchMovieId = async movieId => {
-//   try {
-//     await axios
-//       .get(`/movie/${movieId}?api_key=${apiKey}`)
-//       .then(response => response.data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// Movies/ fetchMoviesBySearch
+const fetchMoviesBySearch = async query => {
+  try {
+    await axios
+      .get(`/search/movie?api_key=${apiKey}&query=${query}`)
+      .then(({ data }) => data.results);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // MovieDetails / fetchMovieDetails
 const fetchMovieDetails = async movieId => {
@@ -78,6 +78,7 @@ const fetchMovieReviews = async movieId => {
 
 export default {
   fetchTrendingMovies,
+  fetchMoviesBySearch,
   fetchMovieDetails,
   fetchMovieCredits,
   fetchMovieReviews,

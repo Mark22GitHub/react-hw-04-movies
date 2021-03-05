@@ -29,7 +29,6 @@ class MovieDetailsPage extends Component {
   componentDidMount() {
     const { movieId } = this.props.match.params;
     const { movie } = this.state;
-    // console.log('componentDidMount');
 
     apiMovieDB
       .fetchMovieDetails(movieId)

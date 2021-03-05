@@ -54,7 +54,11 @@ class MovieDetailsPage extends Component {
         <div className={styles.detailsContainer}>
           <img
             className={styles.detailsImg}
-            src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w400/${poster_path}`
+                : `https://www.kino-teatr.ru/movie/posters/big/0/24200.jpg`
+            }
             alt={title}
           />
 

@@ -35,7 +35,7 @@ const fetchTrendingMovies = async () => {
 // Movies/ fetchMoviesBySearch
 const fetchMoviesBySearch = async query => {
   try {
-    await axios
+    return await axios
       .get(`/search/movie?api_key=${apiKey}&query=${query}`)
       .then(({ data }) => data.results);
   } catch (error) {

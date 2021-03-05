@@ -3,55 +3,74 @@ import axios from 'axios';
 import apiMovieDB from '../../api/the-movie-db-API';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../Components/SearchBar/SearchBar';
+import styles from './MoviesPage.module.css';
 
-const apiKey = 'f6569593c995527660cd005f6c6f1d95';
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+import Loader from '../../Components/Loader/Loader';
 
 class MoviesPage extends Component {
   state = {
     movies: [],
     query: '',
-    // isLoading: false,
+    isLoading: false,
+    error: null,
   };
 
-  componentDidMount() {
-    console.log('componentDidMount');
-    apiMovieDB.fetchMoviesBySearch().then(results =>
-      this.setState({
-        movies: results,
-      }),
-    );
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.query !== this.state.query) {
+      this.fetchMovies();
+    }
   }
 
-  //   async componentDidMount() {
-  //     const response = await axios.get(`/trending/movie/week?api_key=${apiKey}`);
-  //     console.log(response.data.results);
+  onChangeQuery = request => {
+    this.setState({ query: request, movies: [], error: null });
+  };
 
-  //     this.setState({ movies: response.data.results });
-  //   }
+  fetchMovies = () => {
+    const { query } = this.state;
+
+    this.setState({ isLoading: true });
+
+    apiMovieDB
+      .fetchMoviesBySearch(query)
+      .then(
+        data =>
+          this.setState({
+            movies: [...data],
+          }),
+        // console.log(this.state.movies),
+      )
+      .catch(error => this.setState({ error }))
+      .finally(() => this.setState({ isLoading: false }));
+  };
 
   render() {
-    console.log(this.props.match.url);
-    const { movies } = this.state;
-    const { match } = this.props;
-    console.log(movies);
+    const { movies, isLoading, error } = this.state;
+
     return (
       <>
         <SearchBar onSubmit={this.onChangeQuery} />
-        {/* 
-        <h1 className="">
-          'Movies Page', страница поиска фильмов по ключевому слову
-        </h1>
-        <ul className="">
-          {movies.map(({ id, title }) => (
-            <li className="" key={id}>
-              <Link to={`${match.url}/${id}`}>
-            
-                <h2 className="">{title}</h2>
+
+        <ul className={styles.MovieList}>
+          {movies.map(({ id, poster_path, title }) => (
+            <li key={id} className={styles.MovieCard}>
+              <Link to={`/movies/${id}`}>
+                <img
+                  className={styles.MovieImg}
+                  src={
+                    poster_path
+                      ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                      : `https://www.kino-teatr.ru/movie/posters/big/0/24200.jpg`
+                  }
+                  alt={title}
+                />
+                <h2 className={styles.MovieTitle}>{title}</h2>
               </Link>
             </li>
           ))}
-        </ul> */}
+        </ul>
+
+        {isLoading && <Loader />}
+        {error && <h1>Something went wrong...Try again!</h1>}
       </>
     );
   }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiMovieDB from '../../api/the-movie-db-API';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import SearchBar from '../../Components/SearchBar/SearchBar';
-import styles from './MoviesPage.module.css';
-
+// import styles from './MoviesPage.module.css';
 import Loader from '../../Components/Loader/Loader';
+
+import MoviesList from '../../Components/MoviesList/MoviesList';
 
 class MoviesPage extends Component {
   state = {
@@ -50,7 +51,9 @@ class MoviesPage extends Component {
       <>
         <SearchBar onSubmit={this.onChangeQuery} />
 
-        <ul className={styles.MovieList}>
+        <MoviesList movies={movies} />
+
+        {/* <ul className={styles.MovieList}>
           {movies.map(({ id, poster_path, title }) => (
             <li key={id} className={styles.MovieCard}>
               <Link to={`/movies/${id}`}>
@@ -67,7 +70,7 @@ class MoviesPage extends Component {
               </Link>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         {isLoading && <Loader />}
         {error && <h1>Something went wrong...Try again!</h1>}

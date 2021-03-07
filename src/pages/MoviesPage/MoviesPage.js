@@ -6,7 +6,7 @@ import SearchBar from '../../Components/SearchBar/SearchBar';
 // import styles from './MoviesPage.module.css';
 import Loader from '../../Components/Loader/Loader';
 
-import MoviesList from '../../Components/MoviesList/MoviesList';
+import MovieList from '../../Components/MovieList/MovieList';
 
 class MoviesPage extends Component {
   state = {
@@ -51,7 +51,7 @@ class MoviesPage extends Component {
       <>
         <SearchBar onSubmit={this.onChangeQuery} />
 
-        <MoviesList movies={movies} />
+        <MovieList movies={movies} />
 
         {/* <ul className={styles.MovieList}>
           {movies.map(({ id, poster_path, title }) => (

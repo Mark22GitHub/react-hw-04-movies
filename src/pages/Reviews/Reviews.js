@@ -36,14 +36,18 @@ class Reviews extends Component {
         <div>
           <h1 className={styles.title}>Reviews</h1>
           <ul>
-            {reviews.map(({ id, author, content }) => (
-              <li key={id} className={styles.ReviewsItem}>
-                <h3>Author: {author}</h3>
-                <p>
-                  <span>Review:</span> {content}
-                </p>
-              </li>
-            ))}
+            {reviews.length > 0 ? (
+              reviews.map(({ id, author, content }) => (
+                <li key={id} className={styles.ReviewsItem}>
+                  <h3>Author: {author}</h3>
+                  <p>
+                    <span>Review:</span> {content}
+                  </p>
+                </li>
+              ))
+            ) : (
+              <h3>We dont have any reviews for this movie</h3>
+            )}
           </ul>
         </div>
 

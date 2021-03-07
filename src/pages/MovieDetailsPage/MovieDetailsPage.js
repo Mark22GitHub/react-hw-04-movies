@@ -50,6 +50,9 @@ class MovieDetailsPage extends Component {
     } = this.state;
     return (
       <>
+        <button className={styles.goBackBtn} type="button">
+          ⇐ back
+        </button>
         <div className={styles.detailsContainer}>
           <img
             className={styles.detailsImg}

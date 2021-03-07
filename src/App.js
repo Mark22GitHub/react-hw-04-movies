@@ -7,15 +7,16 @@ import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 import MoviesPage from './pages/MoviesPage/MoviesPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Header from './Components/Header/Header';
+import routes from './routes';
 
 const App = () => {
   return (
     <>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/movies/:movieId" component={MovieDetailsPage} />
-        <Route exact path="/movies" component={MoviesPage} />
+        <Route exact path={routes.home} component={HomePage} />
+        <Route path={routes.movieDetails} component={MovieDetailsPage} />
+        <Route exact path={routes.movies} component={MoviesPage} />
         <Route path="/404" component={NotFoundPage} />
         <Redirect to="/404" />
       </Switch>

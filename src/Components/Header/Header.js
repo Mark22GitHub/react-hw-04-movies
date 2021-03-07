@@ -1,15 +1,18 @@
 import React from 'react';
 import { AppBar, Toolbar } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
+// import { NavLink } from 'react-router-dom';
+import routes from '../../routes';
+import Navigation from '../Header/Navigation';
 
 const Header = () => {
   return (
     <AppBar position="static" className={styles.Menu}>
       <Toolbar variant="dense">
-        <NavLink
+        <Navigation />
+        {/* <NavLink
           exact
-          to="/"
+          to={routes.home}
           className={styles.NavLink}
           activeClassName={styles.NavLink__Active}
         >
@@ -17,12 +20,12 @@ const Header = () => {
         </NavLink>
 
         <NavLink
-          to="/movies"
+          to={routes.movies}
           className={styles.NavLink}
           activeClassName={styles.NavLink__Active}
         >
           Movies
-        </NavLink>
+        </NavLink> */}
       </Toolbar>
     </AppBar>
   );

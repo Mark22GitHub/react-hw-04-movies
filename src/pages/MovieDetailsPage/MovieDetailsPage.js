@@ -5,6 +5,8 @@ import Reviews from '../Reviews/Reviews';
 import styles from './MovieDetailsPage.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
 
+import routes from '../../routes';
+
 class MovieDetailsPage extends Component {
   state = {
     movie: [],
@@ -36,10 +38,15 @@ class MovieDetailsPage extends Component {
     // console.log(movie);
   }
 
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    history.push(location?.state?.from || routes.movies);
+  };
+
   render() {
     const { movieId } = this.props.match.params;
-    const { match } = this.props;
-
+    const { match, location } = this.props;
+    // console.log(location.state.from);
     const {
       poster_path,
       title,
@@ -50,7 +57,11 @@ class MovieDetailsPage extends Component {
     } = this.state;
     return (
       <>
-        <button className={styles.goBackBtn} type="button">
+        <button
+          className={styles.goBackBtn}
+          onClick={this.handleGoBack}
+          type="button"
+        >
           ⇐ back
         </button>
         <div className={styles.detailsContainer}>

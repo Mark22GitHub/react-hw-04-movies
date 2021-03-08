@@ -1,36 +1,44 @@
 import './App.css';
 
-import React from 'react';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
-import MoviesPage from './pages/MoviesPage/MoviesPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import React, { Suspense, lazy } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import routes from './routes';
+import Loader from './Components/Loader/Loader';
+
+const HomePage = lazy(() =>
+  import('./pages/HomePage/HomePage' /* webpackChunkName: "home-page" */),
+);
+const MoviesPage = lazy(() =>
+  import('./pages/MoviesPage/MoviesPage' /* webpackChunkName: "movies-page" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    './pages/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
+  ),
+);
+const NotFoundPage = lazy(() =>
+  import(
+    './pages/NotFoundPage/NotFoundPage' /* webpackChunkName: "not-found-page" */
+  ),
+);
 
 const App = () => {
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path={routes.home} component={HomePage} />
-        <Route path={routes.movieDetails} component={MovieDetailsPage} />
-        <Route exact path={routes.movies} component={MoviesPage} />
-        <Route path="/404" component={NotFoundPage} />
-        <Redirect to="/404" />
-      </Switch>
+
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route exact path={routes.home} component={HomePage} />
+          <Route path={routes.movieDetails} component={MovieDetailsPage} />
+          <Route exact path={routes.movies} component={MoviesPage} />
+          <Route path="/404" component={NotFoundPage} />
+          <Redirect to="/404" />
+        </Switch>
+      </Suspense>
     </>
   );
 };
 
 export default App;
-
-// =====================================================================================
-// API Key: f6569593c995527660cd005f6c6f1d95
-
-// An example request looks like:
-
-// `https://api.themoviedb.org/3/movie/550?api_key=f6569593c995527660cd005f6c6f1d95`
-
-// =====================================================================================

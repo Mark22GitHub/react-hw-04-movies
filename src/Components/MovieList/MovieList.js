@@ -15,17 +15,6 @@ const MovieList = ({ movies, location }) => {
             }}
           >
             <SingleMovie poster_path={poster_path} title={title} />
-
-            {/* <img
-              className={styles.MovieImg}
-              src={
-                poster_path
-                  ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                  : `https://www.kino-teatr.ru/movie/posters/big/0/24200.jpg`
-              }
-              alt={title}
-            />
-            <h2 className={styles.MovieTitle}>{title}</h2> */}
           </Link>
         </li>
       ))}

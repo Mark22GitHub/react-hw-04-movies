@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { NavLink } from 'react-router-dom';
 import styles from './Cast.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
 
@@ -11,27 +9,13 @@ class Cast extends Component {
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
-    // const { cast } = this.state;
 
     apiMovieDB
       .fetchMovieCredits(movieId)
       .then(data => this.setState({ cast: [...data.cast] }));
   }
 
-  // async componentDidMount() {
-  //   const { movieId } = this.props.match.params;
-
-  //   const response = await axios.get(
-  //     `/movie/${movieId}/credits?api_key=${apiKey}`,
-  //   );
-  //   console.log(response.data.cast);
-
-  //   this.setState({ ...response.data });
-  // }
-
   render() {
-    // const { match } = this.props;
-    // const { movieId } = this.props.match.params;
     const { cast } = this.state;
     console.log(cast);
     return (

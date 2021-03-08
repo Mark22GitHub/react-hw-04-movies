@@ -4,7 +4,6 @@ import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import styles from './MovieDetailsPage.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
-
 import routes from '../../routes';
 
 class MovieDetailsPage extends Component {
@@ -18,24 +17,12 @@ class MovieDetailsPage extends Component {
     genres: [],
   };
 
-  // async componentDidMount() {
-  //   const { movieId } = this.props.match.params;
-
-  //   const response = await axios.get(`/movie/${movieId}?api_key=${apiKey}`);
-  //   console.log(response.data);
-
-  //   this.setState({ ...response.data });
-  // }
-
   componentDidMount() {
     const { movieId } = this.props.match.params;
-    const { movie } = this.state;
 
     apiMovieDB
       .fetchMovieDetails(movieId)
-      // .then(data => console.log(data));
       .then(data => this.setState({ ...data }));
-    // console.log(movie);
   }
 
   handleGoBack = () => {
@@ -45,8 +32,8 @@ class MovieDetailsPage extends Component {
 
   render() {
     const { movieId } = this.props.match.params;
-    const { match, location } = this.props;
-    // console.log(location.state.from);
+    const { match } = this.props;
+
     const {
       poster_path,
       title,
@@ -55,6 +42,7 @@ class MovieDetailsPage extends Component {
       overview,
       genres,
     } = this.state;
+
     return (
       <>
         <button
@@ -119,13 +107,13 @@ class MovieDetailsPage extends Component {
           <Route
             exact
             path={`${match.path}/cast`}
-            render={props => <Cast {...props} extraPropName={movieId} />}
+            render={props => <Cast {...props} movieId={movieId} />}
           />
 
           <Route
             exact
             path={`${match.path}/reviews`}
-            render={props => <Reviews {...props} extraPropName={movieId} />}
+            render={props => <Reviews {...props} movieId={movieId} />}
           />
         </Switch>
       </>
@@ -134,24 +122,3 @@ class MovieDetailsPage extends Component {
 }
 
 export default MovieDetailsPage;
-
-// {
-//   /* <div className={styles.detailsContainer}>
-
-//           <img
-//             className={styles.detailsImg}>
-//             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-//             alt={title}
-//           />
-//           <h2 className={styles.detailsTitle}>{title}</h2>
-//           <p className={styles.detailsText}>Runtime: {runtime} mins</p>
-//           <p className={styles.detailsText}>User's score: {vote_average}</p>
-//           <h3 className={styles.detailsOverview}>Overview: {overview}</h3>
-//           <h4 className="">Genres:</h4>
-//           <ul className={styles.detailsGenres}>
-//             {genres.map(({ id, name }) => (
-//               <li key={id}>{name}</li>
-//             ))}
-//           </ul>
-//         </div> */
-// }

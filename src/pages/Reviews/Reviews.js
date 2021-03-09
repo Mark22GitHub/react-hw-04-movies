@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Reviews.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
+import PropTypes from 'prop-types';
 
 class Reviews extends Component {
   state = {
@@ -39,5 +40,12 @@ class Reviews extends Component {
     );
   }
 }
+
+Reviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  author: PropTypes.string,
+  content: PropTypes.string,
+};
 
 export default Reviews;

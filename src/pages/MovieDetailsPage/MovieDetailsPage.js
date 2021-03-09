@@ -6,10 +6,10 @@ import Reviews from '../Reviews/Reviews';
 import styles from './MovieDetailsPage.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
 import routes from '../../routes';
+import PropTypes from 'prop-types';
 
 class MovieDetailsPage extends Component {
   state = {
-    movie: [],
     poster_path: null,
     title: null,
     runtime: null,
@@ -121,5 +121,21 @@ class MovieDetailsPage extends Component {
     );
   }
 }
+
+MovieDetailsPage.propTypes = {
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  runtime: PropTypes.number,
+  vote_average: PropTypes.number,
+  overview: PropTypes.string,
+  genres: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+  movieId: PropTypes.number,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default withRouter(MovieDetailsPage);

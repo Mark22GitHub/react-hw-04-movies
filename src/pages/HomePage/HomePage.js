@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import apiMovieDB from '../../api/the-movie-db-API';
 import styles from './HomePage.module.css';
+import PropTypes from 'prop-types';
 
 class HomePage extends Component {
   state = {
@@ -41,5 +42,11 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  id: PropTypes.string,
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+};
 
 export default HomePage;

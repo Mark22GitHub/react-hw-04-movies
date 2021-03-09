@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Cast.module.css';
 import apiMovieDB from '../../api/the-movie-db-API';
+import PropTypes from 'prop-types';
 
 class Cast extends Component {
   state = {
@@ -43,5 +44,12 @@ class Cast extends Component {
     );
   }
 }
+
+Cast.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  profile_path: PropTypes.string,
+  character: PropTypes.string,
+};
 
 export default Cast;

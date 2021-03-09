@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './MovieList.module.css';
 import { Link, withRouter } from 'react-router-dom';
 import SingleMovie from '../SingleMovie/SingleMovie';
+import PropTypes from 'prop-types';
 
 const MovieList = ({ movies, location }) => {
   return (
@@ -20,6 +21,11 @@ const MovieList = ({ movies, location }) => {
       ))}
     </ul>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(MovieList);

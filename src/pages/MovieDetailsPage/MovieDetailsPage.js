@@ -34,6 +34,7 @@ class MovieDetailsPage extends Component {
   render() {
     const { movieId } = this.props.match.params;
     const { match } = this.props;
+    const location = this.props.history.location.state?.from;
 
     const {
       poster_path,
@@ -43,6 +44,8 @@ class MovieDetailsPage extends Component {
       overview,
       genres,
     } = this.state;
+
+    // const from = this.props.history.location.state.from;
 
     return (
       <>
@@ -87,7 +90,11 @@ class MovieDetailsPage extends Component {
               <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.NavLink__Active}
-                to={`${match.url}/cast`}
+                // to={`${match.url}/cast`}
+                to={{
+                  pathname: `${match.url}/cast`,
+                  state: { from: location },
+                }}
               >
                 cast
               </NavLink>
@@ -96,7 +103,11 @@ class MovieDetailsPage extends Component {
               <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.NavLink__Active}
-                to={`${match.url}/reviews`}
+                // to={`${match.url}/reviews`}
+                to={{
+                  pathname: `${match.url}/reviews`,
+                  state: { from: location },
+                }}
               >
                 reviews
               </NavLink>

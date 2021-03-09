@@ -25,9 +25,15 @@ class HomePage extends Component {
         <h1 className={styles.trendingMovie}>Trending Movies</h1>
 
         <ul className={styles.trendingMovieList}>
-          {trendingMovies.map(({ id, title, poster_path }) => (
+          {trendingMovies.map(({ id, title, poster_path, location }) => (
             <li className={styles.trendingMovieCard} key={id}>
-              <Link to={`/movies/${id}`}>
+              <Link
+                to={{
+                  pathname: `/movies/${id}`,
+                  state: { from: location },
+                }}
+                // to={`/movies/${id}`}
+              >
                 <img
                   className={styles.trendingMovieImg}
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}

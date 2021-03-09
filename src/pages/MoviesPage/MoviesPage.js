@@ -12,14 +12,30 @@ class MoviesPage extends Component {
     error: null,
   };
 
+  componentDidMount() {
+    const { search } = this.props.location;
+    if (search) {
+      apiMovieDB.fetchMoviesBySearch(search).then(data =>
+        this.setState({
+          movies: [...data],
+        }),
+      );
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.query !== this.state.query) {
       this.fetchMovies();
     }
   }
 
-  onChangeQuery = request => {
-    this.setState({ query: request, movies: [], error: null });
+  onChangeQuery = async request => {
+    this.setState({ query: request, error: null });
+
+    await this.props.history.push({
+      pathname: this.props.location.pathname,
+      search: `&query=${request}`,
+    });
   };
 
   fetchMovies = () => {

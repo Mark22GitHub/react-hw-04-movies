@@ -9,7 +9,6 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    console.log('componentDidMount');
     apiMovieDB.fetchTrendingMovies().then(results =>
       this.setState({
         trendingMovies: results,
@@ -18,7 +17,6 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log(this.props.match.url);
     const { trendingMovies } = this.state;
 
     return (

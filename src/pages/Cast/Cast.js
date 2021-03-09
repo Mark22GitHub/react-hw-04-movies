@@ -17,7 +17,6 @@ class Cast extends Component {
 
   render() {
     const { cast } = this.state;
-    console.log(cast);
     return (
       <>
         <div>
@@ -29,7 +28,7 @@ class Cast extends Component {
                   className={styles.castImg}
                   src={
                     profile_path
-                      ? `https://image.tmdb.org/t/p/w200/${profile_path}`
+                      ? `https://image.tmdb.org/t/p/w200${profile_path}`
                       : `https://teron.online/uploads/post-7-1163969421_thumb.jpg`
                   }
                   alt={name}

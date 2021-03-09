@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import styles from './MovieDetailsPage.module.css';
@@ -27,7 +28,7 @@ class MovieDetailsPage extends Component {
 
   handleGoBack = () => {
     const { location, history } = this.props;
-    history.push(location?.state?.from || routes.movies);
+    history.push(location?.state?.from || routes.home);
   };
 
   render() {
@@ -57,7 +58,7 @@ class MovieDetailsPage extends Component {
             className={styles.detailsImg}
             src={
               poster_path
-                ? `https://image.tmdb.org/t/p/w400/${poster_path}`
+                ? `https://image.tmdb.org/t/p/w400${poster_path}`
                 : `https://www.kino-teatr.ru/movie/posters/big/0/24200.jpg`
             }
             alt={title}
@@ -121,4 +122,4 @@ class MovieDetailsPage extends Component {
   }
 }
 
-export default MovieDetailsPage;
+export default withRouter(MovieDetailsPage);

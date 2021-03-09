@@ -45,8 +45,6 @@ class MovieDetailsPage extends Component {
       genres,
     } = this.state;
 
-    // const from = this.props.history.location.state.from;
-
     return (
       <>
         <button
@@ -90,7 +88,6 @@ class MovieDetailsPage extends Component {
               <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.NavLink__Active}
-                // to={`${match.url}/cast`}
                 to={{
                   pathname: `${match.url}/cast`,
                   state: { from: location },
@@ -103,7 +100,6 @@ class MovieDetailsPage extends Component {
               <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.NavLink__Active}
-                // to={`${match.url}/reviews`}
                 to={{
                   pathname: `${match.url}/reviews`,
                   state: { from: location },
